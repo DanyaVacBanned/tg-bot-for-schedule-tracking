@@ -12,7 +12,7 @@ from tools.parsing import Parsing
 
 from config import token
 import logging
-import datetime
+
 
 logging.basicConfig(level=logging.INFO)
 bot = Bot(token)
