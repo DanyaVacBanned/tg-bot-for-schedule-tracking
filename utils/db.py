@@ -58,6 +58,4 @@ class Database:
                 DELETE FROM users WHERE user_id = ?
                 """, (user_id,))
 
-# db = Database('tgbot_db.db')
-# # db.add_user(12152121, 'Danya')
-# print(db.get_user_group_by_id(1009429556))
+
