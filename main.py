@@ -67,6 +67,8 @@ async def get_week_couples(message: types.Message):
 @dp.message_handler(text='-Узнать расписание на сегодня🕐-')
 async def get_todat_couples_func(message: types.Message):
     mess = pr.get_today_couples(message)
+    if mess is None:
+        await message.answer("Сегодня выходной")
     for m in mess:
         await message.answer(m)
 
@@ -74,14 +76,17 @@ async def get_todat_couples_func(message: types.Message):
 @dp.message_handler(text='-Узнать расписание на завтра🕐-')
 async def get_tommorow_couples_func(message: types.Message):
     mess = pr.get_tomorrow_couples(message)
+    if mess is None:
+        await message.answer("Сегодня выходной")
     for m in mess:
         await message.answer(m)
 
 
 @dp.message_handler(text='-Следующая пара🕐-')
 async def test_func(message: types.Message):
-    
     mess = pr.get_next_couple(message)
+    if mess is None:
+        await message.answer("Сегодня выходной")
     await message.answer(mess)
 
 

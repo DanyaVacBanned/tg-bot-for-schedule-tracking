@@ -78,6 +78,8 @@ class Parsing:
 
     def get_today_couples(self, message: types.Message):
         week_day_number = message.date.weekday()
+        if week_day_number in [5,6]:
+            return None
         week = ['Понедельник', 'Вторник', 'Среда','Четверг','Пятница','Cуббота','Воскресенье']
         result = []
         req = self.request_to_get_week_couples(message=message)
@@ -99,6 +101,8 @@ class Parsing:
 
     def get_tomorrow_couples(self, message: types.Message):
         week_day_number = message.date.weekday()+1
+        if week_day_number in [5,6]:
+            return None
         result = []
         week = ['Понедельник', 'Вторник', 'Среда','Четверг','Пятница','Cуббота','Воскресенье']
         req = self.request_to_get_week_couples(message=message)
@@ -124,6 +128,8 @@ class Parsing:
         curent_time = datetime.datetime.strptime(str(message.date), '%Y-%m-%d %H:%M:%S').time()
         print(curent_time)
         week_day_number = message.date.weekday()
+        if week_day_number in [5,6]:
+            return None
         week = ['Понедельник', 'Вторник', 'Среда','Четверг','Пятница','Cуббота','Воскресенье']
         req = self.request_to_get_week_couples(message=message)
         for day in req:
